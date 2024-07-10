@@ -2856,26 +2856,26 @@ void func_8005D898(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
     temp_lo = player->unk_0C0 / 182;
     if ((temp_lo >= 7) || (temp_lo < -6)) {
         func_8005D7D8(&player->unk_258[10 + arg1], 1, 0.35f);
-        if (player->unk_22A == 0) {
+        if (player->sparkColor == 0) {
             func_8005D800(&player->unk_258[10 + arg1], 0xFFFFFF, 0x70);
         }
 
-        if (player->unk_22A == 1) {
+        if (player->sparkColor == 1) {
             func_8005D800(&player->unk_258[10 + arg1], 0xFFFF00, 0x70);
   
         }
 
-        if (player->unk_22A >= 2) {
+        if (player->sparkColor >= 2) {
             func_8005D800(&player->unk_258[10 + arg1], 0xFF9600, 0x70);
         }
 
-        if (player->unk_22A >= 2) {
+        if (player->sparkColor >= 2) {
             // Why not put this in previous if statement?
             player->unk_258[10 + arg1].unk_040 = 2;
             return;
         }
 
-        player->unk_258[10 + arg1].unk_040 = player->unk_22A;
+        player->unk_258[10 + arg1].unk_040 = player->sparkColor;
     }
 }
 

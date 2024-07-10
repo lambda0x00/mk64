@@ -348,7 +348,7 @@ typedef struct {
     /* 0x0222 */ s16 unk_222;
     /* 0x0224 */ f32 size;
     /* 0x0228 */ s16 unk_228;
-    /* 0x022A */ s16 unk_22A;
+    /* 0x022A */ s16 sparkColor;
     /* 0x022C */ f32 unk_22C;
     /* 0x0230 */ f32 unk_230;
     /* 0x0234 */ s16 unk_234;

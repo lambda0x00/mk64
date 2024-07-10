@@ -34,7 +34,7 @@ void func_8002934C(Player*, Camera*, s8, s8);
 void func_8002A194(Player*, f32, f32, f32);
 void func_8002A5F4(Vec3f, f32, Vec3f, f32, f32);
 void func_8002A704(Player*, s8);
-void func_8002A79C(Player*, s8);
+void update_miniturbo_boost(Player*, s8);
 void func_8002A8A4(Player*, s8);
 void kart_hop(Player*);
 void func_8002AAC0(Player*);
@@ -92,8 +92,8 @@ void func_80033A40(Player*, s32*, s32*, s32, s32, s32, f32);
 void func_80033AE0(Player*, struct Controller*, s8);
 
 void func_8003680C(Player*, s16);
-void func_80036C5C(Player*);
-void func_80036CB4(Player*);
+void start_drift(Player*);
+void cancel_drift(Player*);
 void func_80036DB4(Player*, Vec3f, Vec3f);
 
 void func_800371F4(Player*, Vec3f, Vec3f);

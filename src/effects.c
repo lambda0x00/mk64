@@ -243,7 +243,7 @@ void func_8008C528(Player *player, s8 arg1) {
     player->kartHopVelocity = D_800E3790[temp_v1];
     player->unk_0A8 = 0;
     player->effects = player->effects | 0x400;
-    player->effects = player->effects & ~0x10;
+    player->effects = player->effects & ~DRIFT_EFFECT;
     player->unk_0C0 = 0;
     player->unk_236 = 2;
     player->unk_042 = 0;
@@ -295,7 +295,7 @@ void func_8008C6D0(Player *player, s8 arg1) {
 void func_8008C73C(Player *player, s8 arg1) {
     clean_effect(player, arg1);
     if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40)) {
-        player->effects &= ~0x10;
+        player->effects &= ~DRIFT_EFFECT;
 
         if ((player->unk_0C0 / 182) >= 0) {
             player->effects |= 0x40;
@@ -409,7 +409,7 @@ void func_8008CDC0(Player* player, s8 arg1) {
     player->unk_0B4 = 0;
     player->unk_0B8 = 3.0f;
     player->unk_0AC = 1;
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFT_EFFECT;
     
     if (((player->unk_07C >> 0x10) >= 0x14) || ((player->unk_07C >> 0x10) < -0x13) || (((player->unk_094 / 18.0f) * 216.0f) <= 30.0f) || ((player->effects & 8) != 0) || (((player->type & PLAYER_HUMAN) == 0) && ((player->effects & 0x1000) == 0))) {
         func_8008C73C(player, arg1);
@@ -481,7 +481,7 @@ void func_8008D0FC(Player *player, s8 arg1) {
     player->unk_0B4 = 0;
     player->unk_0B8 = 2.0f;
     player->unk_0AC = 1;
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFT_EFFECT;
     player->unk_044 |= 0x4000;
 }
 
@@ -591,7 +591,7 @@ void func_8008D570(Player *player, s8 arg1) {
 
     player->unk_0AE = player->rotation[1];
     player->effects |= 0x80000;
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFT_EFFECT;
     player->soundEffects &= ~0x1000;
     player->kartHopJerk = D_800E3730[player->characterId];
     player->kartHopAcceleration = 0.0f;
@@ -648,7 +648,7 @@ void func_8008D7B0(Player* player, s8 arg1) {
 
     player->unk_0AE = player->rotation[1];
     player->effects |= 0x800000;
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFT_EFFECT;
     player->soundEffects &= ~0x20000;
     player->kartHopJerk = D_800E3770[player->characterId];
     player->kartHopAcceleration = 0.0f;
@@ -860,7 +860,7 @@ void apply_hit_rotating_sound_effect(Player* player, s8 arg1) {
 
     player->soundEffects &= ~HIT_ROTATING_SOUND_EFFECT;
     player->effects |= 0x40020000;
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFT_EFFECT;
     player->unk_08C *= 0.6;
     player->unk_0B0 = 0;
     player->size = 1.0f;
@@ -1025,7 +1025,7 @@ void apply_reverse_sound_effect(Player *player, s8 arg1)
 
     player->unk_0A8 = 0;
     player->effects |= 0x01000000;
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFT_EFFECT;
     player->kartHopJerk = 0.0f;
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = 0.0f;
@@ -1133,7 +1133,7 @@ void apply_hit_by_item_sound_effect(Player* player, s8 arg1) {
     func_8008C310(player);
 
     player->unk_0A8 = 0;
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFT_EFFECT;
     player->kartHopJerk = 0.0f;
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = 0.0f;
@@ -1361,7 +1361,7 @@ void func_8008F494(Player* player, s8 arg1) {
  
     player->unk_0A8 = 0;
     player->effects |= 0x10000;
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFT_EFFECT;
     player->unk_236 = 0x1E;
     player->unk_042 = 0;
     
@@ -1591,7 +1591,7 @@ void func_8008FDA8(Player* player, UNUSED s8 arg1) {
 void func_8008FDF4(Player* player, UNUSED s8 arg1) {
     clean_effect(player, arg1);
     
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFT_EFFECT;
     player->kartHopJerk =  D_800E37F0[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = D_800E37D0[player->characterId];
@@ -1600,7 +1600,7 @@ void func_8008FDF4(Player* player, UNUSED s8 arg1) {
 }
 
 void func_8008FE84(Player* player, UNUSED s8 arg1) {
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFT_EFFECT;
     if ((player->effects & 8) != 8) {
         player->effects &= ~0x10000000;
         player->currentSpeed /= 2;
@@ -1785,7 +1785,7 @@ void func_80090778(Player* player) {
     player->unk_07C = 0;
     player->unk_0C0 = 0;
     player->unk_0CA |= 8;
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFT_EFFECT;
     player->unk_222 = 0;
     player->unk_08C = 0.0f;
 
