@@ -289,7 +289,7 @@ typedef struct {
     /* 0x0088 */ f32 unk_088;
     /* 0x008C */ f32 unk_08C;
     /* 0x0090 */ f32 unk_090;
-    /* 0x0094 */ f32 unk_094;
+    /* 0x0094 */ f32 unk_094; // Has to do with over-drifting
     /* 0x0098 */ f32 unk_098;
     /* 0x009C */ f32 currentSpeed;
     /* 0x00A0 */ f32 unk_0A0;

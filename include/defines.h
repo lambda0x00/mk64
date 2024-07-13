@@ -361,7 +361,7 @@ enum KART_AI_BEHAVIOURS {
  * @brief effect of player's
  * for effects
  */
-#define HOP_EFFECT                     0X2
+#define HOP_EFFECT                     0X2 // in the air after pressing R
 #define BOOST_RAMP_WOOD_EFFECT         0x4 // being boosted by a ramp
 #define DRIFT_EFFECT                   0x10 // drifting or hopping
 #define MINITURBO_BOOST_EFFECT         0x100 // boost from completing a mini-turbo
