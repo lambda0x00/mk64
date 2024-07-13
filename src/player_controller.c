@@ -2111,7 +2111,7 @@ void apply_effect(Player *player, s8 arg1, s8 arg2) {
     if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
         apply_boo_effect(player, arg1);
     }
-    if (((player->effects & 0x20000000) == 0x20000000) && (player->unk_228 >= 0x64)) {
+    if (((player->effects & OUTWARDS_SLIDE) == OUTWARDS_SLIDE) && (player->unk_228 >= 0x64)) {
         decelerate_ai_player(player, 4.0f);
     }
     if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) {
@@ -2241,7 +2241,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 screenId, s8 player
         func_8002BF4C(player, playerId);
     }
     apply_effect(player, playerId, screenId);
-    if (((player->effects & 0x20000000) == 0x20000000) && (player->unk_228 >= 0x64)) {
+    if (((player->effects & OUTWARDS_SLIDE) == OUTWARDS_SLIDE) && (player->unk_228 >= 0x64)) {
         sp7C = 2;
     }
     func_80037BB4(player, sp160);
@@ -3080,7 +3080,7 @@ f32 func_80030150(Player *player, s8 arg1) {
                     var_f0 += var_v0 * (0.01 + gKartTurnSpeedReductionTable0[player->characterId]);
                 }
             }
-            if (((player->effects & 0x20000000) == 0x20000000) && (player->unk_228 < 0xA)) {
+            if (((player->effects & OUTWARDS_SLIDE) == OUTWARDS_SLIDE) && (player->unk_228 < 0xA)) {
                 if (var_v0 < 0) {
                     var_f0 += -var_v0 * 0.008;
                 } else {
@@ -3897,7 +3897,7 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     UNUSED s32 pad3;
     s32 var_a0;
     f32 sp44[156] = {0.0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8};
-
+    
     if (((((player->effects & HOP_EFFECT) != HOP_EFFECT) && ((((player->unk_0C0 / 182) <= 6) && ((player->unk_0C0 / 182) >= (-6))) || ((controller->button & R_TRIG) != R_TRIG))) || (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f)) || ((player->effects & 0x8000) == 0x8000))
     {
         cancel_drift(player);
@@ -3933,6 +3933,7 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     sp2D0 = sp2E4 - player->unk_07C;
     sp2D0 = sp2D0 >> 16;
     player->unk_0FA = (s16) sp2D0;
+    // Code for failed drift spin-out
     if (((sp2D0 >= 0x5A) || (sp2D0 < (-0x59))) && (!(player->unk_044 & 0x4000)))
     {
         if ((((((!(player->effects & DRIFT_EFFECT)) && (gCCSelection == CC_150)) && (gModeSelection != BATTLE)) && (!(player->effects & 8))) && (((player->unk_094 / 18.0f) * 216.0f) >= 40.0f)) && (player->unk_204 == 0))
@@ -4206,9 +4207,9 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
         {
             var_s1_2 = (((s32) (((player->unk_07C >> 0x10) * 0xD) + 0x2B1)) / 106) + 0x28;
             if ((player->unk_07C >> 0x10) < (-0x27)) {
-                player->effects = player->effects | 0x20000000;
+                player->effects = player->effects | OUTWARDS_SLIDE;
                 if ((player->unk_07C >> 0x10) < (-0x31)) {
-                    player->effects |= 0x20000000;
+                    player->effects |= OUTWARDS_SLIDE;
                 }
             }
             func_8002A8A4(player, arg2);
@@ -4216,9 +4217,9 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
         else {
             var_s1_2 = (((s32) (((player->unk_07C >> 0x10) * 0xD) + 0x2B1)) / 106) - 0x35;
             if ((player->unk_07C >> 0x10) >= 0x28) {
-                player->effects = player->effects | 0x20000000;
+                player->effects = player->effects | OUTWARDS_SLIDE;
                 if ((player->unk_07C >> 0x10) < (-0x31)) {
-                    player->effects |= 0x20000000;
+                    player->effects |= OUTWARDS_SLIDE;
                 }
             }
             func_8002A8A4(player, arg2);
@@ -4232,7 +4233,7 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
         if (((player->unk_094 / 18.0f) * 216.0f) >= 65.0f) {
             player->unk_078 = var_s1_2 * ((((f64) var_f2_2) + 3.5) + (var_f2_2 * var_f12));
         }
-        if ((player->effects & 0x20000000) == 0x20000000) {
+        if ((player->effects & OUTWARDS_SLIDE) == OUTWARDS_SLIDE) {
             player->unk_078 *= 0.9;
         }
         else {
@@ -4296,7 +4297,7 @@ void func_8003680C(Player *player, s16 arg1) {
           (player->effects & HIT_BY_ITEM_EFFECT) ||
           (player->effects & HIT_EFFECT))) {
         if (!(((player->unk_094 / 18.0f) * 216.0f) >= 110.0f)) {
-            player->effects &= ~0x20000000;
+            player->effects &= ~OUTWARDS_SLIDE;
             player->unk_228 = 0;
             if (!(player->effects & 0x80) && !(player->effects & 0x40)) {
                 sp304 = (s32) player->unk_07C >> 0x10;
@@ -4603,7 +4604,7 @@ void func_80037BB4(Player *player, Vec3f arg1) {
         arg1[2] = 0.0f;
     } else {
         if (player->unk_078 < 0) {
-            if (((player->effects & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
+            if (((player->effects & OUTWARDS_SLIDE) != OUTWARDS_SLIDE) || (player->unk_228 >= 0x64)) {
                 player->rotation[1] += player->unk_078;
             }
             if (!(player->type & PLAYER_KART_AI)) {
@@ -4616,7 +4617,7 @@ void func_80037BB4(Player *player, Vec3f arg1) {
                 func_80037614(player, sp20, arg1);
             }
         } else {
-            if (((player->effects & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
+            if (((player->effects & OUTWARDS_SLIDE) != OUTWARDS_SLIDE) || (player->unk_228 >= 0x64)) {
                 player->rotation[1] += player->unk_078;
             }
             if (!(player->type & PLAYER_KART_AI)) {

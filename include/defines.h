@@ -370,6 +370,7 @@ enum KART_AI_BEHAVIOURS {
 #define BOOST_RAMP_ASPHALT_EFFECT      0x100000 // being boosted by a boost pad
 #define HIT_BY_ITEM_EFFECT             0x2000000 // being hit by an item
 #define HIT_EFFECT                     0x4000000 // hitting an object
+#define OUTWARDS_SLIDE                 0x20000000 // holding opposite the turn direction while drifting
 #define LIGHTNING_EFFECT               0x40000000 // being hit by lightning
 #define BOO_EFFECT                     0x80000000 // being a boo
 
